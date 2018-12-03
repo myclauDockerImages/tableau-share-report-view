@@ -19,8 +19,8 @@ container allow you to share report view and return embed html
 | --- | --- | --- |
 | TABLEAU_HOST | null | must be fill before you use , it is the url to access tableau server |
 | USERNAME | null | must be fill before you use , it is the username that have permission to grant ticket or the ticket can read resource only for this user|
-| IFRAME_WIDTH | 1000 | Width of the iframe to show the report |
-| IFRAME_HEIGHT | 600 | Height of the iframe to show the report |
+| IFRAME_WIDTH | -1 | Width of the iframe to show the report, if both width and height are -1 will auto fullscreen |
+| IFRAME_HEIGHT | -1 | Height of the iframe to show the report, if both width and height are -1 will auto fullscreen |
 | PORT | 8080 | expose port for access |
 # How to reach page
 

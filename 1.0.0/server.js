@@ -41,7 +41,14 @@ app.use(requestToken)
 app.get('/report/:folder/:item', (req, res) => {
   if( req.errorFromRequestToken == null ){
 	if( req.requestToken != "-1" ){
-	  	var responseText = "<iframe src='http://"+TABLEAU_HOST+"/trusted/"+req.requestToken+"/views/"+req.params.folder+"/"+req.params.item+"?:embed=yes&:toolbar=no&:showShareOptions=false' width='"+IFRAME_WIDTH+"' height='"+IFRAME_HEIGHT+"'></iframe>"
+		if( IFRAME_WIDTH == -1 || IFRAME_HEIGHT == -1 ){
+			var css =  "<style>iframe { height: 100%; width: 100%; padding: 0px; margin:0px; resize: both;} html {overflow: hidden;}</style>"
+		}else{
+			var css = "<style>iframe { height: "+IFRAME_HEIGHT+"; width: "+IFRAME_WIDTH+";}</style>"
+		}
+ 		var responseText= css 
+		responseText += "<iframe src='http://"+TABLEAU_HOST+"/trusted/"+req.requestToken+"/views/"+req.params.folder+"/"+req.params.item+"?:embed=yes&:toolbar=no&:showShareOptions=false' ></iframe>"
+
 	}
 	else{
 		var responseText = "The Token cannot get from "+TABLEAU_HOST+" Please check with Tableau admin"
